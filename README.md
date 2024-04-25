@@ -17,3 +17,7 @@ We used the following reasoners and versions.
 - DLV (build BEN/Dec 17 2012   gcc 4.6.1) (downloaded from https://www.dlvsystem.it/files/dlv.x86-64-linux-elf-static.bin)
 - iDLV 1.1.6 (downloaded from https://github.com/DeMaCS-UNICAL/I-DLV/releases)
 
+## Credits
+
+The modelling of the wolf, goat, cabbage example is inspired by lecture slides by Jean-François Baget.
+
