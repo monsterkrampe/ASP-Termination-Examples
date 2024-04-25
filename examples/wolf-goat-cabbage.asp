@@ -1,0 +1,29 @@
+steps(0..100).
+
+bank(east). bank(west).
+opposite(east, west). opposite(west,east).
+passenger(wolf). passenger(goat). passenger(cabbage).
+position(wolf, west, 0). position(goat, west, 0). position(cabbage, west, 0).
+position(farmer, west, 0).
+eats(wolf, goat). eats(goat, cabbage).
+
+win(N) :- position(wolf, east, N), position(goat, east, N), position(cabbage, east, N).
+winEnd :- win(N).
+:- not winEnd.
+lose :- position(X, B, N), position(Y, B, N), eats(X, Y), position(farmer, C, N), opposite(B, C).
+:- lose.
+
+goAlone(N) :- position(farmer, B, N), not takeSome(N), not win(N).
+takeSome(N) :- position(farmer, B, N), passenger(Y), position(Y, B, N), not goAlone(N), not win(N).
+
+transport(X, N) :- takeSome(N), position(X, B, N), position(farmer, B, N), passenger(X), not othertransport(X, N).
+othertransport(X, N) :- position(X, B, N), transport(Y, N), X != Y.
+
+position(X, C, N+1) :- transport(X, N), position(X, B, N), opposite(B, C), steps(N+1).
+position(X, B, N+1) :- position(X, B, N), passenger(X), not transport(X, N), not win(N), steps(N+1).
+position(farmer, C, N+1) :- position(farmer, B, N), opposite(B, C), not win(N), steps(N+1).
+
+change(N, M) :- position(X, B, N), position(X, C, M), opposite(B, C), N < M.
+redundant :- position(X, B, N), position(X, B, M), N < M, not change(N, M).
+:- redundant.
+
