@@ -1,6 +1,7 @@
 # Small collection of ASP examples to illustrate (non-)termination behavior of Solvers 
 
-*This is supplementary material for a paper accepted at IJCAI 2024. We will link back to the paper once it is published.*
+*This is supplementary material for a paper accepted at IJCAI 2024.*  
+<https://doi.org/10.24963/ijcai.2024/375>
 
 We provide example ASP programs for use with the ASP solvers 
 Alpha, 
